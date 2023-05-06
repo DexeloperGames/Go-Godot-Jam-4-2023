@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7y6ymp2vupbn"]
+
+[ext_resource type="Script" path="res://scenes/objects/player.gd" id="1_uw3e6"]
+[ext_resource type="PackedScene" uid="uid://dnsm5e0dxu3fe" path="res://scenes/objects/gimbal_camera.tscn" id="2_x3kyu"]
+[ext_resource type="PackedScene" uid="uid://dubi44bqdvskx" path="res://scenes/UI/remaining_primitives_display.tscn" id="3_l8rcq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q2yhv"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerCamera")]
+script = ExtResource("1_uw3e6")
+PlayerCamera = NodePath("Gimbal Camera")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.929734, 0)
+shape = SubResource("CapsuleShape3D_q2yhv")
+
+[node name="Gimbal Camera" parent="." instance=ExtResource("2_x3kyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64317, 0)
+
+[node name="Remaining Primitives Display" parent="." instance=ExtResource("3_l8rcq")]
+offset_right = -1763.0
+offset_bottom = -795.0

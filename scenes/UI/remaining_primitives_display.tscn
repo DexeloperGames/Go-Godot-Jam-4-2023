@@ -1,0 +1,206 @@
+[gd_scene load_steps=22 format=3 uid="uid://dubi44bqdvskx"]
+
+[ext_resource type="Script" path="res://scenes/UI/remaining_primitives_display.gd" id="1_sudki"]
+[ext_resource type="PackedScene" uid="uid://ducacok1nkh8b" path="res://scenes/UI/PrimitivesIcon.tscn" id="2_r16n4"]
+[ext_resource type="Shader" path="res://scenes/UI/primitives_modulate.gdshader" id="3_htx1j"]
+[ext_resource type="FontFile" uid="uid://bfrb2owo2bh0m" path="res://assets/fonts/ariblk.ttf" id="3_kxsmn"]
+[ext_resource type="Texture2D" uid="uid://cdkqrwdtgxn0o" path="res://assets/images/Cube Icon.png" id="5_27ahq"]
+[ext_resource type="Texture2D" uid="uid://draxf02yljj04" path="res://assets/images/Octohedron Icon.png" id="6_rj8cv"]
+[ext_resource type="Texture2D" uid="uid://o3n60pmosddm" path="res://assets/images/Dodecahedron Icon.png" id="7_hnsti"]
+[ext_resource type="Texture2D" uid="uid://cjc4kvrnucyyr" path="res://assets/images/Icohedron Icon.png" id="8_br7p0"]
+
+[sub_resource type="Shader" id="Shader_i85ji"]
+code = "shader_type canvas_item;
+uniform int primitive_type : hint_range(0,4);
+global uniform vec4 primitive_color_0;
+global uniform vec4 primitive_color_1;
+global uniform vec4 primitive_color_2;
+global uniform vec4 primitive_color_3;
+global uniform vec4 primitive_color_4;
+
+
+void fragment(){
+	switch(primitive_type){
+		case 0u: COLOR *= primitive_color_0; break;
+		case 1u: COLOR *= primitive_color_1; break;
+		case 2u: COLOR *= primitive_color_2; break;
+		case 3u: COLOR *= primitive_color_3; break;
+		case 4u: COLOR *= primitive_color_4; break;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a346t"]
+resource_local_to_scene = true
+shader = SubResource("Shader_i85ji")
+shader_parameter/primitive_type = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ciepk"]
+resource_local_to_scene = true
+shader = ExtResource("3_htx1j")
+shader_parameter/primitive_type = 0
+
+[sub_resource type="Theme" id="Theme_hv6oe"]
+Label/fonts/font = ExtResource("3_kxsmn")
+
+[sub_resource type="LabelSettings" id="LabelSettings_d6pha"]
+font_size = 25
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c6kkn"]
+resource_local_to_scene = true
+shader = SubResource("Shader_i85ji")
+shader_parameter/primitive_type = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lj3hj"]
+resource_local_to_scene = true
+shader = ExtResource("3_htx1j")
+shader_parameter/primitive_type = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2jcvy"]
+resource_local_to_scene = true
+shader = SubResource("Shader_i85ji")
+shader_parameter/primitive_type = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2p2et"]
+resource_local_to_scene = true
+shader = ExtResource("3_htx1j")
+shader_parameter/primitive_type = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ip6l"]
+resource_local_to_scene = true
+shader = SubResource("Shader_i85ji")
+shader_parameter/primitive_type = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_44xhy"]
+resource_local_to_scene = true
+shader = ExtResource("3_htx1j")
+shader_parameter/primitive_type = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0t5ms"]
+resource_local_to_scene = true
+shader = SubResource("Shader_i85ji")
+shader_parameter/primitive_type = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_imgrk"]
+resource_local_to_scene = true
+shader = ExtResource("3_htx1j")
+shader_parameter/primitive_type = 4
+
+[node name="Remaining Primitives Display" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1028.0
+offset_bottom = -437.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sudki")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PrimitivesIcon" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_r16n4")]
+material = SubResource("ShaderMaterial_a346t")
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+material = SubResource("ShaderMaterial_ciepk")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_hv6oe")
+text = "4/4"
+label_settings = SubResource("LabelSettings_d6pha")
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PrimitivesIcon" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("2_r16n4")]
+material = SubResource("ShaderMaterial_c6kkn")
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_27ahq")
+primitive_type = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+material = SubResource("ShaderMaterial_lj3hj")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_hv6oe")
+text = "6/6"
+label_settings = SubResource("LabelSettings_d6pha")
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PrimitivesIcon" parent="VBoxContainer/HBoxContainer3" instance=ExtResource("2_r16n4")]
+material = SubResource("ShaderMaterial_2jcvy")
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_rj8cv")
+primitive_type = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3"]
+material = SubResource("ShaderMaterial_2p2et")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_hv6oe")
+text = "4/4"
+label_settings = SubResource("LabelSettings_d6pha")
+horizontal_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PrimitivesIcon" parent="VBoxContainer/HBoxContainer4" instance=ExtResource("2_r16n4")]
+material = SubResource("ShaderMaterial_2ip6l")
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("7_hnsti")
+primitive_type = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4"]
+material = SubResource("ShaderMaterial_44xhy")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_hv6oe")
+text = "4/4"
+label_settings = SubResource("LabelSettings_d6pha")
+horizontal_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PrimitivesIcon" parent="VBoxContainer/HBoxContainer5" instance=ExtResource("2_r16n4")]
+material = SubResource("ShaderMaterial_0t5ms")
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("8_br7p0")
+primitive_type = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer5"]
+material = SubResource("ShaderMaterial_imgrk")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_hv6oe")
+text = "4/4"
+label_settings = SubResource("LabelSettings_d6pha")
+horizontal_alignment = 1

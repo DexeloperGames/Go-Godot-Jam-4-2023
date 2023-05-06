@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://cspy8ab1f0aw1"]
+
+[ext_resource type="Script" path="res://scenes/UI/testthing.gd" id="1_0w28a"]
+[ext_resource type="PackedScene" uid="uid://8va3w6108gwr" path="res://assets/models/Tetrahedron.glb" id="1_3r8b3"]
+[ext_resource type="Shader" uid="uid://bty15adax5hol" path="res://scenes/UI/uitest2.tres" id="2_fisvj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_go8ek"]
+shader = ExtResource("2_fisvj")
+
+[sub_resource type="SphereMesh" id="SphereMesh_50anw"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0w28a")
+
+[node name="Tetrahedron" parent="." instance=ExtResource("1_3r8b3")]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+material = SubResource("ShaderMaterial_go8ek")
+mesh = SubResource("SphereMesh_50anw")
+
+[editable path="Tetrahedron"]
