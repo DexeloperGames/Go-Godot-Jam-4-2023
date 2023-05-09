@@ -9,6 +9,35 @@
 [ext_resource type="Texture2D" uid="uid://o3n60pmosddm" path="res://assets/images/Dodecahedron Icon.png" id="7_hnsti"]
 [ext_resource type="Texture2D" uid="uid://cjc4kvrnucyyr" path="res://assets/images/Icohedron Icon.png" id="8_br7p0"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kmsf6"]
+resource_local_to_scene = true
+shader = ExtResource("3_htx1j")
+shader_parameter/primitive_type = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ciepk"]
+resource_local_to_scene = true
+shader = ExtResource("3_htx1j")
+shader_parameter/primitive_type = 0
+
+[sub_resource type="Theme" id="Theme_hv6oe"]
+Label/fonts/font = ExtResource("3_kxsmn")
+
+[sub_resource type="LabelSettings" id="LabelSettings_d6pha"]
+font_size = 25
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7fsy2"]
+resource_local_to_scene = true
+shader = ExtResource("3_htx1j")
+shader_parameter/primitive_type = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lj3hj"]
+resource_local_to_scene = true
+shader = ExtResource("3_htx1j")
+shader_parameter/primitive_type = 1
+
 [sub_resource type="Shader" id="Shader_i85ji"]
 code = "shader_type canvas_item;
 uniform int primitive_type : hint_range(0,4);
@@ -29,36 +58,7 @@ void fragment(){
 	}
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a346t"]
-resource_local_to_scene = true
-shader = SubResource("Shader_i85ji")
-shader_parameter/primitive_type = 0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ciepk"]
-resource_local_to_scene = true
-shader = ExtResource("3_htx1j")
-shader_parameter/primitive_type = 0
-
-[sub_resource type="Theme" id="Theme_hv6oe"]
-Label/fonts/font = ExtResource("3_kxsmn")
-
-[sub_resource type="LabelSettings" id="LabelSettings_d6pha"]
-font_size = 25
-shadow_size = 2
-shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(3, 3)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c6kkn"]
-resource_local_to_scene = true
-shader = SubResource("Shader_i85ji")
-shader_parameter/primitive_type = 1
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lj3hj"]
-resource_local_to_scene = true
-shader = ExtResource("3_htx1j")
-shader_parameter/primitive_type = 1
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2jcvy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2rcvg"]
 resource_local_to_scene = true
 shader = SubResource("Shader_i85ji")
 shader_parameter/primitive_type = 2
@@ -68,7 +68,7 @@ resource_local_to_scene = true
 shader = ExtResource("3_htx1j")
 shader_parameter/primitive_type = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ip6l"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7n32g"]
 resource_local_to_scene = true
 shader = SubResource("Shader_i85ji")
 shader_parameter/primitive_type = 3
@@ -78,7 +78,7 @@ resource_local_to_scene = true
 shader = ExtResource("3_htx1j")
 shader_parameter/primitive_type = 3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0t5ms"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_apdf3"]
 resource_local_to_scene = true
 shader = SubResource("Shader_i85ji")
 shader_parameter/primitive_type = 4
@@ -112,7 +112,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="PrimitivesIcon" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_r16n4")]
-material = SubResource("ShaderMaterial_a346t")
+material = SubResource("ShaderMaterial_kmsf6")
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -130,7 +130,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="PrimitivesIcon" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("2_r16n4")]
-material = SubResource("ShaderMaterial_c6kkn")
+material = SubResource("ShaderMaterial_7fsy2")
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("5_27ahq")
@@ -150,7 +150,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="PrimitivesIcon" parent="VBoxContainer/HBoxContainer3" instance=ExtResource("2_r16n4")]
-material = SubResource("ShaderMaterial_2jcvy")
+material = SubResource("ShaderMaterial_2rcvg")
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("6_rj8cv")
@@ -170,7 +170,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="PrimitivesIcon" parent="VBoxContainer/HBoxContainer4" instance=ExtResource("2_r16n4")]
-material = SubResource("ShaderMaterial_2ip6l")
+material = SubResource("ShaderMaterial_7n32g")
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("7_hnsti")
@@ -190,7 +190,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="PrimitivesIcon" parent="VBoxContainer/HBoxContainer5" instance=ExtResource("2_r16n4")]
-material = SubResource("ShaderMaterial_0t5ms")
+material = SubResource("ShaderMaterial_apdf3")
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("8_br7p0")

@@ -2,34 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://cdkqrwdtgxn0o" path="res://assets/images/Cube Icon.png" id="1_6ley6"]
 [ext_resource type="Texture2D" uid="uid://cjc4kvrnucyyr" path="res://assets/images/Icohedron Icon.png" id="1_7v12c"]
+[ext_resource type="Shader" path="res://scenes/UI/primitives_modulate.gdshader" id="1_wcigr"]
 [ext_resource type="Script" path="res://scenes/UI/PrimitivesIcon.gd" id="2_rgrly"]
 [ext_resource type="Texture2D" uid="uid://d4d76d503n2ng" path="res://assets/images/Tetrahedron Icon.png" id="3_utgi8"]
 [ext_resource type="Texture2D" uid="uid://draxf02yljj04" path="res://assets/images/Octohedron Icon.png" id="5_q4y42"]
 [ext_resource type="Texture2D" uid="uid://o3n60pmosddm" path="res://assets/images/Dodecahedron Icon.png" id="6_wbpn3"]
 
-[sub_resource type="Shader" id="Shader_i85ji"]
-code = "shader_type canvas_item;
-uniform int primitive_type : hint_range(0,4);
-global uniform vec4 primitive_color_0;
-global uniform vec4 primitive_color_1;
-global uniform vec4 primitive_color_2;
-global uniform vec4 primitive_color_3;
-global uniform vec4 primitive_color_4;
-
-
-void fragment(){
-	switch(primitive_type){
-		case 0u: COLOR *= primitive_color_0; break;
-		case 1u: COLOR *= primitive_color_1; break;
-		case 2u: COLOR *= primitive_color_2; break;
-		case 3u: COLOR *= primitive_color_3; break;
-		case 4u: COLOR *= primitive_color_4; break;
-	}
-}"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y6vuj"]
 resource_local_to_scene = true
-shader = SubResource("Shader_i85ji")
+shader = ExtResource("1_wcigr")
 shader_parameter/primitive_type = 0
 
 [node name="PrimitivesIcon" type="TextureRect"]

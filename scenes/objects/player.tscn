@@ -1,10 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7y6ymp2vupbn"]
+[gd_scene load_steps=9 format=3 uid="uid://c7y6ymp2vupbn"]
 
 [ext_resource type="Script" path="res://scenes/objects/player.gd" id="1_uw3e6"]
 [ext_resource type="PackedScene" uid="uid://dnsm5e0dxu3fe" path="res://scenes/objects/gimbal_camera.tscn" id="2_x3kyu"]
 [ext_resource type="PackedScene" uid="uid://dubi44bqdvskx" path="res://scenes/UI/remaining_primitives_display.tscn" id="3_l8rcq"]
+[ext_resource type="Script" path="res://scenes/objects/scripttorublshtoongi/tooluitest.gd" id="4_0ootn"]
+[ext_resource type="Texture2D" uid="uid://c54181nj1lljk" path="res://icon.svg" id="4_jekyh"]
+[ext_resource type="Shader" path="res://scenes/UI/primitives_modulate.gdshader" id="5_qdkc4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q2yhv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lcn2a"]
+shader = ExtResource("5_qdkc4")
+shader_parameter/primitive_type = null
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerCamera")]
 script = ExtResource("1_uw3e6")
@@ -17,6 +24,57 @@ shape = SubResource("CapsuleShape3D_q2yhv")
 [node name="Gimbal Camera" parent="." instance=ExtResource("2_x3kyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64317, 0)
 
-[node name="Remaining Primitives Display" parent="." instance=ExtResource("3_l8rcq")]
-offset_right = -1763.0
-offset_bottom = -795.0
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 1021.0
+offset_top = 576.0
+offset_right = 1068.0
+offset_bottom = 602.0
+text = "TESAT"
+
+[node name="Remaining Primitives Display" parent="UI" instance=ExtResource("3_l8rcq")]
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = 0.0
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_0ootn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="UI/Control/VBoxContainer/HBoxContainer"]
+material = SubResource("ShaderMaterial_lcn2a")
+layout_mode = 2
+texture = ExtResource("4_jekyh")
+
+[node name="Label" type="Label" parent="UI/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "awestdsfsdfdsaasdfasdfasefeeaswcvasvsadascdessadfsavzsdfvcawscewfascvsdafzxsdvewscew"
